@@ -4,6 +4,7 @@ import { css } from '@emotion/core'
 import { Home } from './home'
 import { CreateTransaction } from './components/transactions/CreateTransaction'
 import { Settings } from './components/settings/Settings'
+import { Charts } from './components/charts/charts'
 
 function AppRouter () {
   return (
@@ -15,12 +16,16 @@ function AppRouter () {
               <Link to='/'>Home</Link>
             </li>
             <li>
+              <Link to='/charts'>Charts</Link>
+            </li>
+            <li>
               <Link to='/settings'>Settings</Link>
             </li>
           </ul>
         </nav>
         <div className='main-content' css={contentStyle}>
           <Route component={Home} exact path='/' />
+          <Route component={Charts} exact path='/charts' />
           <Route component={Settings} exact path='/settings' />
           <Route component={CreateTransaction} exact path='/create-transaction' />
         </div>

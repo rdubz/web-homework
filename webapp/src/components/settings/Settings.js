@@ -1,10 +1,8 @@
 import React, { useState } from 'react';
-import Box from '@mui/material/Box';
 import FormGroup from '@mui/material/FormGroup';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import Switch from '@mui/material/Switch';
 import { css } from '@emotion/core'
-import { LocalState } from '@apollo/client/core/LocalState';
 
 const styles = css`
  .settingsContainer {

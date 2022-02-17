@@ -7,21 +7,7 @@ import Button from '@mui/material/Button';
 import Switch from '@mui/material/Switch';
 import { css } from '@emotion/core'
 import { useMutation, gql } from '@apollo/client';
-
-const CREATE_TRANSACTION_MUTATION = gql`
-  mutation PostMutation($user_id: String! $merchant_id: String!, $description: String!, $debit: Boolean!, $credit: Boolean!, $amount: Int!) 
-  {
-    transactions(user_id: $user_id, merchant_id: $merchant_id, description: $description, debit: $debit, credit: $credit, amount: $amount) {
-      id
-      user_id
-      merchant_id
-      description
-      debit
-      credit
-      amount
-    }
-  }
-`;
+import CreateTransactionMutation from '../../gql/createTransaction.gql'
 
 const styles = css`
  .formBox {
@@ -37,7 +23,7 @@ export function CreateTransaction()
     const [description, setDescription] = useState("")
     const [debit, setDebit] = useState(true)
     const [credit, setCredit] = useState(false)
-    const [amount, setAmount] = useState(0.00)
+    const [amount, setAmount] = useState(0)
 
     function handleDebitClicked() {
         setDebit(!debit)
@@ -60,17 +46,26 @@ export function CreateTransaction()
     }
 
     function checkForCompletedForm() {
-        return userId.length > 0 && merchantId.length > 0 && description.length > 0 && amount !== 0.00
+        return userId.length > 0 && merchantId.length > 0 && description.length > 0 && amount !== 0
     }
 
-    const [createTransaction] = useMutation(CREATE_TRANSACTION_MUTATION, {
+    function clearForm() {
+        setUserId("")
+        setMerchantId("")
+        setDebit(true)
+        setCredit(false)
+        setDescription("")
+        setAmount(0)
+    }
+
+    const [createTransaction] = useMutation(CreateTransactionMutation, {
         variables: {
             user_id: userId,
             merchant_id: merchantId, 
             description: description,
             debit: debit,
             credit: credit,
-            amount: amount
+            amount: parseFloat(amount)
         }
       });
 
@@ -78,7 +73,8 @@ export function CreateTransaction()
         <div className='createTransactionForm' css={styles}>
             <Box component="form" className='formBox' onSubmit={(e) => {
         e.preventDefault();
-        createTransaction();}}>
+        createTransaction();
+        clearForm();}}>
                 <FormGroup className='formGroup'>
                     <TextField required id="userIdTextBox" label="User ID" onChange={(e) => setUserId(e.target.value)}/>
                     <TextField required id="merchantIdTextBox" label="Merchant ID" onChange={(e) => setMerchantId(e.target.value)}/>
