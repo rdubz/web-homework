@@ -3,6 +3,9 @@ import { arrayOf, string, bool, number, shape } from 'prop-types'
 import { css } from '@emotion/core'
 
 const styles = css`
+ .transactions {
+   margin: 0 auto;
+ }
  .header {
    font-weight: bold;
  }
@@ -12,7 +15,7 @@ const makeDataTestId = (transactionId, fieldName) => `transaction-${transactionI
 
 export function TxTable ({ data }) {
   return (
-    <table css={styles}>
+    <table className='transactions' css={styles}>
       <tbody>
         <tr className='header'>
           <td >ID</td>
