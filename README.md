@@ -1,35 +1,40 @@
-# Divvy Homework Assignment
+# Completed Divvy Homework Assignment
 
-This repository provides a starting point for a basic React + GraphQL application.
-All of the configuration boilerplate is complete so you can start by writing the code that you want us to see.
-
-Please **fork** this repo a **private repo** on your GitHub account.
-
-Please share your finished project repo with @thawk55 and @jakerichan as part of your submission.
+I have finished this take home assginment with 3+ objectives completed. The completed objectives are as follows:
 
 <br />
 
 
-## Project Setup
+## Create, Edit, Update Transactions
 
-This repository is split into a web app directory (eg `/webapp`) and two server directories (eg `/webserver` and `/elixir`).
+* Added a route to a component that allows the user to create a transaction
+    * This is working and is properly adding transactions to the mongodb using the apollo client
+* Added edit and delete icons in the Tx table to easily edit/delete transactions
+    * There is a bug with this. I seems that the back end webserver doesn't have mutations for deleting or updating defined? But the front end functionality is there
 
-The `/webserver` one includes a functional GraphQL server in NodeJS with MongoDB backing it.
 
-The `/elixir` one includes a functional GraphQL server in Elixir with Postgresql backing it.
+## Convert Numbers to Roman Numerals
 
-If you are applying for backend, you should use the elixir code.
-If you are applying for frontend, feel free to use either.
+* Created a static class/function that performs the conversion from number to RomanNumberal
+* Created a component to allow the user to toggle this setting on/off
+    * Implemented with a simple solution of just caching the current setting in the users browser
+* Created unit tests that properly test my algorithm implementation for this feature
 
-This project is _intentionally not utilizing 3rd party services or create-react-app_ to give you the opportunity to showcase your talents wherever they are, be it the front end or the back end.
+## Added Pie Chart for Debit/Credit Category
 
-## Instructions
+* Created a route and component to render the transaction data to the user
+* Used recharts to maintain the 'react' approach and usage
 
-If you are pursuing a full stack or backend position, please include elixir code changes in your homework.
+## Improve the User Experience
 
-See the [Frontend instructions](webapp/README.md) for frontend focused instructions.  If front end only, use the node server in `/webserver`.
+* I slightly improved on styling using material-ui
+* Implemented nested views/components (Transactions)
+* Added more routes in react-router
 
-See the [Backend instructions](backend.md) for backend focused instructions.
+## Other Items
+
+* I also moved all of the emotion-js styling out of their respective components and placed them in a global styles file. This allows for components to move around and have their styling stay the same (after importing the style from global)
+* Added some basic jest tests for the TxTable component. And tested the RomanNumeral functionality
 
 
 
