@@ -5,16 +5,10 @@ import FormGroup from '@mui/material/FormGroup'
 import FormControlLabel from '@mui/material/FormControlLabel'
 import Button from '@mui/material/Button'
 import Switch from '@mui/material/Switch'
-import { css } from '@emotion/core'
 import { useMutation } from '@apollo/client'
 import UpdateTransaction from '../../gql/updateTransaction.gql'
+import { formBoxStyles } from '../../styles/global'
 
-const styles = css`
- .formBox {
-   margin: 0 auto;
-   max-width: 500px;
- }
-`
 
 export function EditTransaction()
 {
@@ -71,7 +65,7 @@ export function EditTransaction()
       });
 
     return(
-        <div className='editTransactionForm' css={styles}>
+        <div className='editTransactionForm' css={formBoxStyles}>
             <Box component="form" className='formBox' onSubmit={(e) => {
         e.preventDefault();
         updateTransaction();

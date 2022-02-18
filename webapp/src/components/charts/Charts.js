@@ -1,16 +1,9 @@
-import React, { useState } from 'react';
-import { css } from '@emotion/core'
-import { PieChart, Pie, Legend, Cell} from 'recharts';
+import React from 'react'
+import { PieChart, Pie, Legend, Cell} from 'recharts'
 import { useQuery } from '@apollo/client'
 import GetTransactions from '../../gql/transactions.gql'
-import { transactions } from '../../../mocks/transactions-data';
+import { chartStyles } from '../../styles/global'
 
-
-const styles = css`
- .pieChart {
-   margin: 0 auto;
- }
-`
 const COLORS = ['#0088FE', '#00C49F'];
 
 export function Charts()
@@ -24,7 +17,7 @@ export function Charts()
     }
 
     return(
-        <PieChart width={1000} height={600} css={styles}>
+        <PieChart width={1000} height={600} css={chartStyles}>
             <Legend verticalAlign="bottom" align="center" />
             <Pie
             className="pieChart"

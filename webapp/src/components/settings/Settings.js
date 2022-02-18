@@ -2,13 +2,8 @@ import React, { useState } from 'react';
 import FormGroup from '@mui/material/FormGroup';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import Switch from '@mui/material/Switch';
-import { css } from '@emotion/core'
+import { settingsStyles } from '../../styles/global';
 
-const styles = css`
- .settingsContainer {
-   margin: 0 auto;
- }
-`
 
 export function Settings()
 {
@@ -39,7 +34,7 @@ export function Settings()
     }
 
     return(
-        <div className='userSettingsForm' css={styles}>
+        <div className='userSettingsForm' css={settingsStyles}>
             <div className='settingsContainer'>
                 <h1>User Settings</h1>
                 <FormGroup className='formGroup'>

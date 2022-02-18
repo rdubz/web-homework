@@ -1,31 +1,16 @@
-import React, { useCallback } from 'react';
+import React from 'react';
 import { arrayOf, string, bool, number, shape } from 'prop-types'
-import { TxTable } from './TxTable';
-import Button from '@mui/material/Button';
-import { css } from '@emotion/core'
-import { Link } from 'react-router-dom';
-
-const transactionStyles = css`
- .transactionsContainer {
-     text-align: center;
- }
-
- .createTransactionLink {
-     margin-top: 20px;
- }
-`
+import { TxTable } from './TxTable'
+import { Link } from 'react-router-dom'
+import { transactionStyles } from '../../styles/global'
 
 export function Transactions({data}) {
     return(
-        <div css={transactionStyles}>
-
-            <div className='transactionsContainer'>
-                <TxTable data={data} />
-                <Link to='/create-transaction'>
-                    <p className='createTransactionLink'>+ Create New Transaction</p>
-                </Link>
-            
-            </div>
+        <div className='transactionsContainer' css={transactionStyles}>
+            <TxTable data={data} />
+            <Link to='/create-transaction'>
+                <p className='createTransactionLink'>+ Create New Transaction</p>
+            </Link>
         </div>
     )
 }

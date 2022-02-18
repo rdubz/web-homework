@@ -1,6 +1,5 @@
 import React from 'react'
 import { arrayOf, string, bool, number, shape } from 'prop-types'
-import { css } from '@emotion/core'
 import Converter from '../../utils/converter'
 import Table from '@mui/material/Table';
 import TableBody from '@mui/material/TableBody';
@@ -14,12 +13,6 @@ import DeleteIcon from '@mui/icons-material/Delete';
 import { Link } from 'react-router-dom'
 import { useMutation } from '@apollo/client';
 import DeleteTransaction from '../../gql/deleteTransaction.gql'
-
-const styles = css`
- .header {
-   font-weight: bold;
- }
-`
 
 const makeDataTestId = (transactionId, fieldName) => `transaction-${transactionId}-${fieldName}`
 
@@ -41,7 +34,8 @@ export function TxTable ({ data }) {
     deleteTransaction({ variables: { id:id } })
   }
 
-  const [deleteTransaction] = useMutation(DeleteTransaction);
+  const [deleteTransaction] = useMutation(DeleteTransaction, 
+);
 
   return (
           <TableContainer component={Paper}>

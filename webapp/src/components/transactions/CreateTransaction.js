@@ -6,15 +6,10 @@ import FormControlLabel from '@mui/material/FormControlLabel';
 import Button from '@mui/material/Button';
 import Switch from '@mui/material/Switch';
 import { css } from '@emotion/core'
-import { useMutation, gql } from '@apollo/client';
-import CreateTransactionMutation from '../../gql/createTransaction.gql';
+import { useMutation } from '@apollo/client';
+import CreateTransactionMutation from '../../gql/createTransaction.gql'
+import { formBoxStyles } from '../../styles/global';
 
-const styles = css`
- .formBox {
-   margin: 0 auto;
-   max-width: 500px;
- }
-`
 
 export function CreateTransaction()
 {
@@ -70,7 +65,7 @@ export function CreateTransaction()
       });
 
     return(
-        <div className='createTransactionForm' css={styles}>
+        <div className='createTransactionForm' css={formBoxStyles}>
             <Box component="form" className='formBox' onSubmit={(e) => {
         e.preventDefault();
         createTransaction();
