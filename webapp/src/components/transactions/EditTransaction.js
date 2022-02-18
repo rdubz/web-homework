@@ -1,13 +1,13 @@
-import React, { useState } from 'react';
-import Box from '@mui/material/Box';
-import TextField from '@mui/material/TextField';
-import FormGroup from '@mui/material/FormGroup';
-import FormControlLabel from '@mui/material/FormControlLabel';
-import Button from '@mui/material/Button';
-import Switch from '@mui/material/Switch';
+import React, { useState } from 'react'
+import Box from '@mui/material/Box'
+import TextField from '@mui/material/TextField'
+import FormGroup from '@mui/material/FormGroup'
+import FormControlLabel from '@mui/material/FormControlLabel'
+import Button from '@mui/material/Button'
+import Switch from '@mui/material/Switch'
 import { css } from '@emotion/core'
-import { useMutation, gql } from '@apollo/client';
-import CreateTransactionMutation from '../../gql/createTransaction.gql';
+import { useMutation } from '@apollo/client'
+import UpdateTransaction from '../../gql/updateTransaction.gql'
 
 const styles = css`
  .formBox {
@@ -16,7 +16,7 @@ const styles = css`
  }
 `
 
-export function CreateTransaction()
+export function EditTransaction()
 {
     const [userId, setUserId] = useState("")
     const [merchantId, setMerchantId] = useState("")
@@ -58,8 +58,9 @@ export function CreateTransaction()
         setAmount(0)
     }
 
-    const [createTransaction] = useMutation(CreateTransactionMutation, {
+    const [updateTransaction] = useMutation(UpdateTransaction, {
         variables: {
+            id: "9hef9wh",
             user_id: userId,
             merchant_id: merchantId, 
             description: description,
@@ -70,10 +71,10 @@ export function CreateTransaction()
       });
 
     return(
-        <div className='createTransactionForm' css={styles}>
+        <div className='editTransactionForm' css={styles}>
             <Box component="form" className='formBox' onSubmit={(e) => {
         e.preventDefault();
-        createTransaction();
+        updateTransaction();
         clearForm();}}>
                 <FormGroup className='formGroup'>
                     <TextField required id="userIdTextBox" label="User ID" onChange={(e) => setUserId(e.target.value)} value={userId} />
@@ -83,7 +84,7 @@ export function CreateTransaction()
                     <FormControlLabel control={<Switch onClick={handleCreditClicked} checked={credit}/>} label="Credit" />
                     <TextField required id="amountTextBox" label="amount" onChange={(e) => setAmount(e.target.value)} value={amount} />
                 </FormGroup>
-                <Button variant="contained" disabled={!checkForCompletedForm()} type='submit'>Create Transaction</Button>
+                <Button variant="contained" disabled={!checkForCompletedForm()} type='submit'>Update Transaction</Button>
             </Box>
         </div>
     )

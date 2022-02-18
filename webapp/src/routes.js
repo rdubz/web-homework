@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Route, Link } from 'react-router-dom'
 import { css } from '@emotion/core'
 import { Home } from './home'
 import { CreateTransaction } from './components/transactions/CreateTransaction'
+import { EditTransaction } from './components/transactions/EditTransaction'
 import { Settings } from './components/settings/Settings'
 import { Charts } from './components/charts/charts'
 
@@ -28,6 +29,7 @@ function AppRouter () {
           <Route component={Charts} exact path='/charts' />
           <Route component={Settings} exact path='/settings' />
           <Route component={CreateTransaction} exact path='/create-transaction' />
+          <Route component={EditTransaction} exact path='/edit-transaction/:id' />
         </div>
       </div>
     </Router>

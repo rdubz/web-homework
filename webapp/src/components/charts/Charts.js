@@ -7,7 +7,7 @@ import { transactions } from '../../../mocks/transactions-data';
 
 
 const styles = css`
- .settingsContainer {
+ .pieChart {
    margin: 0 auto;
  }
 `
@@ -19,14 +19,15 @@ export function Charts()
 
     function createDebitCreditCategoryData()
     {
-        return [{name: 'Debit', value: transactions.filter(t => t.debit).map(t => t.amount).reduce((previous, current) => previous + current, 0)}, 
-        {name: 'Credit', value: transactions.filter(t => t.credit).map(t => t.amount).reduce((previous, current) => previous + current, 0)}]
+        return [{name: 'Debit', value: data.transactions.filter(t => t.debit).map(t => t.amount).reduce((previous, current) => previous + current, 0)}, 
+        {name: 'Credit', value: data.transactions.filter(t => t.credit).map(t => t.amount).reduce((previous, current) => previous + current, 0)}]
     }
 
     return(
-        <PieChart width={1000} height={600}>
+        <PieChart width={1000} height={600} css={styles}>
             <Legend verticalAlign="bottom" align="center" />
             <Pie
+            className="pieChart"
             data={createDebitCreditCategoryData()}
             cx={120}
             cy={200}
@@ -36,6 +37,7 @@ export function Charts()
             paddingAngle={5}
             dataKey="value"
             label
+            align="center"
             >
             {createDebitCreditCategoryData().map((entry, index) => (
                 <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />
