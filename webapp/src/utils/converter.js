@@ -2,7 +2,7 @@ class Converter {
 
     static ToRomanNumerals(num)
     {
-        //arrays used for lookup/conversion
+        // arrays used for lookup/conversion
         var ones = new Array ('I', 'II', 'III', 'IV', 'V', 'VI', 'VII', 'VIII', 'IX')
         var tens = new Array ('X', "XX", 'XXX', 'XL', 'L', 'LX', 'LXX', 'LXXX', 'XC')
         var hundreds = new Array ('C', 'CC', 'CCC', 'CD', 'D', 'DC', 'DCC', 'DCCC', 'CM')
@@ -12,16 +12,16 @@ class Converter {
 
         for (let i = digits.length; i > 0; i--)
         {
-            if(digits[i - 1] === 0)
+            if (digits[i - 1] === 0)
                 continue;
 
-            if(i === 3)
+            if (i === 3)
                 romanNumeral += hundreds[digits[i - 1] - 1]
             
-            if(i === 2)
+            if (i === 2)
                 romanNumeral += tens[digits[i - 1] - 1]
             
-            if(i === 1)
+            if (i === 1)
                 romanNumeral += ones[digits[i - 1] - 1]
 
         }
@@ -30,4 +30,4 @@ class Converter {
     }
 }
 
-export default Converter;
+export default Converter

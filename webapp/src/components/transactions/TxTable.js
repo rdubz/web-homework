@@ -34,12 +34,11 @@ export function TxTable ({ data }) {
     deleteTransaction({ variables: { id:id } })
   }
 
-  const [deleteTransaction] = useMutation(DeleteTransaction, 
-);
+  const [deleteTransaction] = useMutation(DeleteTransaction);
 
   return (
           <TableContainer component={Paper}>
-            <Table sx={{ minWidth: 650 }} size="small" aria-label="a dense table">
+            <Table sx={{ minWidth: 650 }} size="small">
               <TableHead>
                 <TableRow>
                   <TableCell>ID</TableCell>

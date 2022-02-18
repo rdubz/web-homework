@@ -1,4 +1,4 @@
-import Converter from './utils/converter'
+import Converter from '../utils/converter'
 
 test('convert 92 to Roman Numberals equal XCII', () => {
   expect(Converter.ToRomanNumerals(92)).toBe('XCII');
